@@ -6,12 +6,11 @@
   <title>TEDx Silver Oaks | Maya</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body {
       font-family: 'Playfair Display', serif;
       background: #0a0a0a;
       color: #f5f5f5;
-      overflow-x: hidden;
     }
 
     /* Loader */
@@ -60,15 +59,11 @@
       animation: glowPulse 2s infinite;
     }
 
-    @keyframes spinIris {
-      to { transform: rotate(360deg); }
-    }
-
+    @keyframes spinIris { to { transform: rotate(360deg); } }
     @keyframes pulseEye {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
     }
-
     @keyframes glowPulse {
       0%, 100% { opacity: 0.3; }
       50% { opacity: 0.6; }
@@ -79,7 +74,7 @@
       position: sticky;
       top: 0;
       background: #111;
-      padding: 10px 20px;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -107,7 +102,7 @@
       color: #ff2b2b;
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       height: 100vh;
       background: url('https://images.unsplash.com/photo-1602526216234-0d7a3b3c2e4f?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
@@ -116,7 +111,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      position: relative;
     }
 
     .hero h1 {
@@ -141,9 +135,9 @@
       background: #ff5555;
     }
 
-    /* Manifesto Section */
+    /* Manifesto */
     .manifesto {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
       background: #0d0d0d;
     }
@@ -162,7 +156,28 @@
       line-height: 1.6;
     }
 
-    /* Info Section */
+    /* Theme */
+    .theme {
+      padding: 60px 20px;
+      background: #111;
+      text-align: center;
+    }
+
+    .theme h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: #ff2b2b;
+      margin-bottom: 10px;
+    }
+
+    .theme p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Info Cards */
     .info-section {
       display: flex;
       flex-wrap: wrap;
@@ -194,16 +209,9 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .hero button {
-        font-size: 1rem;
-      }
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
+      .hero h1 { font-size: 2.5rem; }
+      .hero button { font-size: 1rem; }
+      nav ul { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -217,48 +225,67 @@
   <nav>
     <h2>TEDx Maya</h2>
     <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Speakers</li>
-      <li>Register</li>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#manifesto">About</a></li>
+      <li><a href="#theme">Theme</a></li>
+      <li><a href="#register">Register</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <h1>WE'RE BACK!</h1>
-    <button onclick="window.location.href='#register'">Register Now</button>
+    <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Register Now</button>
   </section>
 
-  <!-- Manifesto Section -->
-  <section class="manifesto">
+  <!-- Manifesto -->
+  <section class="manifesto" id="manifesto">
     <h2>Our Manifesto</h2>
     <p>
-      Where illusion meets insight. TEDx Silver Oaks is a stage where the brightest minds gather to share stories, ideas, and visions that challenge perception and reveal deeper truths. We believe in the power of curiosity, creativity, and connection. Maya is not just a theme — it’s a journey into the unseen.
+      Where illusion meets insight. TEDx Silver Oaks is a stage where the brightest minds gather to share stories, ideas, and visions that challenge perception and reveal deeper truths. Maya is not just a theme — it’s a journey into the unseen.
     </p>
   </section>
 
-  <!-- Info Section -->
-  <section class="info-section">
-    <div class="info-card">
-      <h3>What is TEDx?</h3>
-      <p>TEDx events are independently organized talks that bring ideas worth spreading to local communities.</p>
-    </div>
-    <div class="info-card">
-      <h3>Theme: Maya</h3>
-      <p>Maya explores illusion, perception, and the deeper truths hidden beneath what we see.</p>
-    </div>
-    <div class="info-card">
-      <h3>Why Attend?</h3>
-      <p>Get inspired by speakers, connect with thinkers, and experience the magic of TEDx live.</p>
-    </div>
+  <!-- Theme -->
+  <section class="theme" id="theme">
+    <h2>Theme: Maya</h2>
+    <p>
+      Maya, in ancient philosophy, represents illusion — the veil that obscures reality. At TEDx Silver Oaks, we explore how perception shapes truth, how stories distort or reveal, and how breaking illusions can lead to transformation.
+    </p>
   </section>
 
-  <script>
-    // Hide loader after page load
-    window.addEventListener("load", () => {
-      document.getElementById("loader").style.display = "none";
-    });
-  </script>
+  <!-- Info Cards -->
+  <section class="
+    <!-- Info Cards -->
+<section class="info-section" id="register">
+  <div class="info-card">
+    <h3>What is TEDx?</h3>
+    <p>TEDx events are independently organized talks that bring ideas worth spreading to local communities.</p>
+  </div>
+  <div class="info-card">
+    <h3>Theme: Maya</h3>
+    <p>Maya explores illusion, perception, and the deeper truths hidden beneath what we see.</p>
+  </div>
+  <div class="info-card">
+    <h3>Why Attend?</h3>
+    <p>Get inspired by speakers, connect with thinkers, and experience the magic of TEDx live.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background:#111; text-align:center; padding:40px 20px;">
+  <h3 style="font-family:'Cinzel', serif; color:#ff2b2b;">TEDx Silver Oaks</h3>
+  <p style="max-width:600px; margin:auto; font-size:1rem; line-height:1.6;">
+    TEDx Silver Oaks is independently organized under license from TED. Join us as we explore the illusions of Maya and uncover the truths that shape our world.
+  </p>
+  <p style="margin-top:20px; font-size:0.9rem; color:#888;">© 2025 TEDx Silver Oaks Intl School Bachupally</p>
+</footer>
+
+<script>
+  // Hide loader after page load
+  window.addEventListener("load", () => {
+    document.getElementById("loader").style.display = "none";
+  });
+</script>
 </body>
 </html>
