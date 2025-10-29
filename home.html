@@ -6,57 +6,13 @@
   <title>TEDx Silver Oaks | Maya</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
-    /* Base Styles */
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
       font-family: 'Playfair Display', serif;
-      background: radial-gradient(circle, #0a0a0a, #1a1a1a);
+      background: #0a0a0a;
       color: #f5f5f5;
       overflow-x: hidden;
-    }
-
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 3rem;
-      color: gold;
-      text-align: center;
-      margin-top: 100px;
-    }
-
-    p {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .info-section {
-      display: flex;
-      justify-content: space-around;
-      padding: 50px;
-      flex-wrap: wrap;
-    }
-
-    .info-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      width: 300px;
-      margin: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .info-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px gold;
     }
 
     /* Loader */
@@ -64,99 +20,201 @@
       position: fixed;
       width: 100%;
       height: 100%;
-      background: black;
+      background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
     }
 
-    .spinner {
-      width: 80px;
-      height: 80px;
-      border: 8px solid #fff;
-      border-top: 8px solid gold;
+    .eye {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      animation: spin 1.5s linear infinite;
+      border: 6px solid #ff2b2b;
+      position: relative;
+      animation: pulse 2s infinite;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+    .eye::before {
+      content: '';
+      position: absolute;
+      top: 25%;
+      left: 25%;
+      width: 50%;
+      height: 50%;
+      background: #fff;
+      border-radius: 50%;
+      animation: rotate 2s linear infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    nav h2 {
+      font-family: 'Cinzel', serif;
+      color: #ff2b2b;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav ul li:hover {
+      color: #ff2b2b;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1602526216234-0d7a3b3c2e4f?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      color: white;
+      text-shadow: 0 0 10px #000;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background: #ff2b2b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero button:hover {
+      background: #ff5555;
+    }
+
+    /* Info Section */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 60px 20px;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid #ff2b2b;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .info-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff2b2b;
+    }
+
+    .info-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 0 10px #ff2b2b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
       }
-    }
-
-    /* AOS Animations */
-    [data-aos] {
-      opacity: 0;
-      transition-property: opacity, transform;
-      transition-duration: 1s;
-    }
-
-    [data-aos].aos-animate {
-      opacity: 1;
-      transform: none;
-    }
-
-    [data-aos="fade-down"] {
-      transform: translateY(-20px);
-    }
-
-    [data-aos="fade-up"] {
-      transform: translateY(20px);
-    }
-
-    [data-aos="fade-right"] {
-      transform: translateX(-20px);
-    }
-
-    [data-aos="fade-left"] {
-      transform: translateX(20px);
+      .hero button {
+        font-size: 1rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Loader -->
   <div id="loader">
-    <div class="spinner"></div>
+    <div class="eye"></div>
   </div>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>TEDx Maya</h2>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Speakers</li>
+      <li>Register</li>
+    </ul>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1 data-aos="fade-down">TEDx Silver Oaks</h1>
-    <p data-aos="fade-up">Unveiling Illusions. Revealing Truths.</p>
+    <h1>WE'RE BACK!</h1>
+    <button onclick="window.location.href='#register'">Register Now</button>
   </section>
 
-  <!-- Info Boxes -->
+  <!-- Info Section -->
   <section class="info-section">
-    <div class="info-card" data-aos="fade-right">
-      <h2>What is TEDx?</h2>
-      <p>TEDx is a program of local, self-organized events that bring people together to share a TED-like experience.</p>
+    <div class="info-card">
+      <h3>What is TEDx?</h3>
+      <p>TEDx events are independently organized talks that bring ideas worth spreading to local communities.</p>
     </div>
-    <div class="info-card" data-aos="fade-left">
-      <h2>Theme: Maya</h2>
-      <p>Maya explores the illusion of reality, perception, and the hidden truths behind what we see.</p>
+    <div class="info-card">
+      <h3>Theme: Maya</h3>
+      <p>Maya explores illusion, perception, and the deeper truths hidden beneath what we see.</p>
+    </div>
+    <div class="info-card">
+      <h3>Why Attend?</h3>
+      <p>Get inspired by speakers, connect with thinkers, and experience the magic of TEDx live.</p>
     </div>
   </section>
 
   <script>
-    // Loader
+    // Hide loader on page load
     window.addEventListener("load", () => {
       document.getElementById("loader").style.display = "none";
-    });
-
-    // AOS-like animation trigger
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("aos-animate");
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll("[data-aos]").forEach(el => {
-      observer.observe(el);
     });
   </script>
 </body>
 </html>
+
+
